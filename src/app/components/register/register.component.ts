@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -23,6 +24,8 @@ export class RegisterComponent implements OnInit {
     repeatPassword: new FormControl('', Validators.required),
   });
 
+  constructor(private service: AuthService) {}
+
   ngOnInit(): void {
     for (let i = 1; i <= 31; i++) {
       this.days.push(i);
@@ -40,6 +43,8 @@ export class RegisterComponent implements OnInit {
   public register(): void {
     this.registerForm.value.birthday = '01/01/2001';
 
-    console.log(this.registerForm.value);
+    this.service
+      .register(this.registerForm.value)
+      .subscribe((result) => console.log(result));
   }
 }
