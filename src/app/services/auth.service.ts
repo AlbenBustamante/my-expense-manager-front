@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IUserRegister, IUserResponse } from '../models/user.model';
 import { Observable } from 'rxjs';
+import { IAuthRequest, IAuthResponse } from '../models/auth.model';
 
 @Injectable({
   providedIn: 'root',
@@ -13,5 +14,9 @@ export class AuthService {
 
   public register(req: IUserRegister): Observable<IUserResponse> {
     return this.http.post<IUserResponse>(`${this.url}/register`, req);
+  }
+
+  public logIn(req: IAuthRequest): Observable<IAuthResponse> {
+    return this.http.post<IAuthResponse>(`${this.url}/sign-in`, req);
   }
 }
