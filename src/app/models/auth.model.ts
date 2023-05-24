@@ -5,5 +5,5 @@ export interface IAuthRequest {
 
 export interface IAuthResponse {
   userId: number;
-  tokata: string;
+  token: string;
 }
