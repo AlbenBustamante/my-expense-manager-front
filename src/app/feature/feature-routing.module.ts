@@ -3,16 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'auth',
     loadChildren: () =>
-      import('./feature/feature.module').then(
-        (feature) => feature.FeatureModule
-      ),
+      import('./auth/auth.module').then((auth) => auth.AuthModule),
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class FeatureRoutingModule {}
