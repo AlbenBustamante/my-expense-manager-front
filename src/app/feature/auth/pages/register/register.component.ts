@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -12,19 +12,21 @@ export class RegisterComponent {
   months: number[] = [];
   years: number[] = [];
 
-  registerForm: FormGroup = new FormGroup({
-    name: new FormControl('', Validators.required),
-    lastName: new FormControl('', Validators.required),
-    username: new FormControl('', Validators.required),
-    email: new FormControl('', Validators.required),
-    phone: new FormControl('', Validators.required),
-    gender: new FormControl('', Validators.required),
-    birthday: new FormControl(''),
-    password: new FormControl('', Validators.required),
-    repeatPassword: new FormControl('', Validators.required),
-  });
+  public registerForm: FormGroup;
 
-  constructor(private service: AuthService) {}
+  constructor(private service: AuthService, private fb: FormBuilder) {
+    this.registerForm = this.fb.group({
+      name: ['', Validators.required],
+      lastName: ['', Validators.required],
+      username: ['', Validators.required],
+      email: ['', Validators.required],
+      phone: ['', Validators.required],
+      gender: [''],
+      birthday: [''],
+      password: ['', Validators.required],
+      repeatPassword: ['', Validators.required],
+    });
+  }
 
   ngOnInit(): void {
     for (let i = 1; i <= 31; i++) {

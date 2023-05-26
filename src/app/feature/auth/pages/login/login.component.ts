@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -9,12 +9,18 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  loginForm: FormGroup = new FormGroup({
-    usernameOrEmailOrPhone: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
-  });
+  public loginForm: FormGroup;
 
-  constructor(private service: AuthService, private router: Router) {}
+  constructor(
+    private service: AuthService,
+    private router: Router,
+    private fb: FormBuilder
+  ) {
+    this.loginForm = this.fb.group({
+      usernameOrEmailOrPhone: ['', Validators.required],
+      password: ['', Validators.required],
+    });
+  }
 
   public login(): void {
     this.service
