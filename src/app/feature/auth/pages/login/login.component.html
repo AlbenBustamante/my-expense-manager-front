@@ -9,7 +9,13 @@
             placeholder="Email, username or phone"
             class="bg-white border border-slate-400 rounded w-full px-4 py-2 shadow focus:outline-slate-400"
             formControlName="usernameOrEmailOrPhone"
+            [ngClass]="{
+              error: isTouchedField(loginForm, 'usernameOrEmailOrPhone')
+            }"
           />
+          <span class="text-red-900 text-xs">{{
+            getErrorMessage("usernameOrEmailOrPhone")
+          }}</span>
           <input
             type="password"
             placeholder="Password"

@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { AppBaseComponent } from 'src/app/core/utils/app-base.component';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })
-export class RegisterComponent {
+export class RegisterComponent extends AppBaseComponent {
   days: number[] = [];
   months: number[] = [];
   years: number[] = [];
@@ -15,6 +16,7 @@ export class RegisterComponent {
   public registerForm: FormGroup;
 
   constructor(private service: AuthService, private fb: FormBuilder) {
+    super();
     this.registerForm = this.fb.group({
       name: ['', Validators.required],
       lastName: ['', Validators.required],
