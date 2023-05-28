@@ -31,10 +31,12 @@ export class LoginComponent extends AppBaseComponent {
     }
 
     await lastValueFrom(this.service.logIn(this.loginForm.value));
+
+    this.router.navigateByUrl('/');
   }
 
   public goToRegister(): void {
-    this.router.navigate(['/auth/register']);
+    this.router.navigateByUrl('/auth/register');
   }
 
   public getErrorMessage(field: string): string {

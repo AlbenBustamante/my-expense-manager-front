@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { lastValueFrom } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { AppBaseComponent } from 'src/app/core/utils/app-base.component';
 
@@ -15,7 +17,11 @@ export class RegisterComponent extends AppBaseComponent {
 
   public registerForm: FormGroup;
 
-  constructor(private service: AuthService, private fb: FormBuilder) {
+  constructor(
+    private service: AuthService,
+    private fb: FormBuilder,
+    private router: Router
+  ) {
     super();
     this.registerForm = this.fb.group({
       name: ['', Validators.required],
@@ -44,11 +50,17 @@ export class RegisterComponent extends AppBaseComponent {
     }
   }
 
-  public register(): void {
+  public async register(): Promise<void> {
     this.registerForm.value.birthday = '01/01/2001';
 
-    this.service
-      .register(this.registerForm.value)
-      .subscribe((result) => console.log(result));
+    if (this.registerForm.invalid) {
+      return this.registerForm.markAllAsTouched();
+    }
+
+    await lastValueFrom(this.service.register(this.registerForm.value));
+
+    alert('Successfully registered!');
+
+    this.router.navigateByUrl('/auth/login');
   }
 }
