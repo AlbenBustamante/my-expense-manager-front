@@ -1,4 +1,4 @@
-import { Gender } from './enums';
+import { Gender } from '../utils/enums';
 
 export interface IUserRegister {
   name: string;
