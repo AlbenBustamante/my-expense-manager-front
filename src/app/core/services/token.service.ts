@@ -8,7 +8,7 @@ export class TokenService {
   constructor() {}
 
   public save(token: string): void {
-    setCookie('token', token);
+    setCookie('token', token, { expires: 1, path: '/' });
   }
 
   public get(): string | undefined {

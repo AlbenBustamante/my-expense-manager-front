@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { lastValueFrom } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { AppBaseComponent } from 'src/app/core/utils/app-base.component';
 
@@ -24,10 +25,12 @@ export class LoginComponent extends AppBaseComponent {
     });
   }
 
-  public login(): void {
-    this.service
-      .logIn(this.loginForm.value)
-      .subscribe((result) => console.log(result));
+  public async login(): Promise<void> {
+    if (this.loginForm.invalid) {
+      return this.loginForm.markAllAsTouched();
+    }
+
+    await lastValueFrom(this.service.logIn(this.loginForm.value));
   }
 
   public goToRegister(): void {
