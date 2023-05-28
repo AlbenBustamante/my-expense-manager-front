@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule, inject } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from '../core/guards/auth.guard';
+import { AuthGuardService } from '../core/guards/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    canActivate: [AuthGuard],
+    canActivate: [() => inject(AuthGuardService).canActivateWithoutAuth()],
     loadChildren: () =>
       import('./home/home.module').then((home) => home.HomeModule),
   },
