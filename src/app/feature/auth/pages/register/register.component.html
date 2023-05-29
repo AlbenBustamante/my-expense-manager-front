@@ -1,8 +1,13 @@
 <section class="h-screen bg-slate-200 flex justify-center items-center">
   <div class="w-full max-w-lg shadow-xl">
     <div class="bg-white px-10 rounded-lg">
-      <div class="text-center text-3xl font-semibold py-8">Sign Up</div>
-      <form role="form" [formGroup]="registerForm" (ngSubmit)="register()">
+      <div class="text-center text-3xl font-semibold py-8">{{ title }}</div>
+      <form
+        role="form"
+        [formGroup]="registerForm"
+        (ngSubmit)="register()"
+        *ngIf="!registered"
+      >
         <div class="space-y-3.5">
           <input
             type="text"
@@ -10,42 +15,63 @@
             class="text-sm bg-white border border-slate-400 rounded w-full px-4 py-2 shadow focus:outline-slate-400"
             formControlName="name"
           />
+          <span class="text-xs text-red-700">{{
+            getErrorMessage("name")
+          }}</span>
           <input
             type="text"
             placeholder="Last name"
             class="text-sm bg-white border border-slate-400 rounded w-full px-4 py-2 shadow focus:outline-slate-400"
             formControlName="lastName"
           />
+          <span class="text-xs text-red-700">{{
+            getErrorMessage("lastName")
+          }}</span>
           <input
             type="text"
             placeholder="Username"
             class="text-sm bg-white border border-slate-400 rounded w-full px-4 py-2 shadow focus:outline-slate-400"
             formControlName="username"
           />
+          <span class="text-xs text-red-700">{{
+            getErrorMessage("username")
+          }}</span>
           <input
             type="email"
             placeholder="Email"
             class="text-sm bg-white border border-slate-400 rounded w-full px-4 py-2 shadow focus:outline-slate-400"
             formControlName="email"
           />
+          <span class="text-xs text-red-700">{{
+            getErrorMessage("email")
+          }}</span>
           <input
             type="text"
             placeholder="Phone number"
             class="text-sm bg-white border border-slate-400 rounded w-full px-4 py-2 shadow focus:outline-slate-400"
             formControlName="phone"
           />
+          <span class="text-xs text-red-700">{{
+            getErrorMessage("phone")
+          }}</span>
           <input
             type="password"
             placeholder="New password"
             class="text-sm bg-white border border-slate-400 rounded w-full px-4 py-2 shadow focus:outline-slate-400"
             formControlName="password"
           />
+          <span class="text-xs text-red-700">{{
+            getErrorMessage("password")
+          }}</span>
           <input
             type="password"
             placeholder="Confirm your password"
             class="text-sm bg-white border border-slate-400 rounded w-full px-4 py-2 shadow focus:outline-slate-400"
             formControlName="repeatPassword"
           />
+          <span class="text-xs text-red-700">{{
+            getErrorMessage("repeatPassword")
+          }}</span>
         </div>
         <p class="text-xs pt-3 pb-1 text-gray-900 font-semibold">Gender</p>
         <div class="flex justify-between space-x-4">
@@ -53,36 +79,24 @@
             class="flex justify-between items-center border border-slate-400 px-3 py-1 shadow w-full"
           >
             <label for="male" class="text-sm">Male</label>
-            <input
-              type="radio"
-              name="gender"
-              value="MALE"
-              formControlName="gender"
-            />
+            <input type="radio" value="MALE" formControlName="gender" />
           </div>
           <div
             class="flex justify-between items-center border border-slate-400 px-3 py-1 shadow w-full"
           >
             <label for="female" class="text-sm">Female</label>
-            <input
-              type="radio"
-              name="gender"
-              value="FEMALE"
-              formControlName="gender"
-            />
+            <input type="radio" value="FEMALE" formControlName="gender" />
           </div>
           <div
             class="flex justify-between items-center border border-slate-400 px-3 py-1 shadow w-full"
           >
             <label for="another" class="text-sm">Another</label>
-            <input
-              type="radio"
-              name="gender"
-              value="ANOTHER"
-              formControlName="gender"
-            />
+            <input type="radio" value="ANOTHER" formControlName="gender" />
           </div>
         </div>
+        <span class="text-red-700 text-xs">{{
+          getErrorMessage("gender")
+        }}</span>
         <div class="text-center pt-6 space-y-3">
           <button
             type="submit"
@@ -97,6 +111,18 @@
           >
         </div>
       </form>
+      <div class="space-y-3 pb-6" *ngIf="registered">
+        <p class="text-center">Now you can login to your account!</p>
+        <div class="flex justify-center">
+          <button
+            type="button"
+            class="w-72 bg-blue-700 text-white px-5 py-2 rounded hover:bg-blue-800"
+            (click)="goToLogIn()"
+          >
+            Log In
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
