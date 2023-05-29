@@ -22,6 +22,9 @@
             class="bg-white border border-slate-400 rounded w-full px-4 py-2 shadow focus:outline-slate-400"
             formControlName="password"
           />
+          <span class="text-red-900 text-xs">{{
+            getErrorMessage("password")
+          }}</span>
           <div class="text-center">
             <button
               type="submit"

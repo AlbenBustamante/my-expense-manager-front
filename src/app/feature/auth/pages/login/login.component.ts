@@ -40,14 +40,17 @@ export class LoginComponent extends AppBaseComponent {
   }
 
   public getErrorMessage(field: string): string {
-    let message: string = '';
+    const required: string[] = ['usernameOrEmailOrPhone', 'password'];
 
     if (this.isTouchedField(this.loginForm, field)) {
-      if (this.loginForm.get(field)?.hasError('required')) {
-        message = 'This field is required';
+      if (
+        required.includes(field) &&
+        this.loginForm.get(field)?.hasError('required')
+      ) {
+        return 'This field is required';
       }
     }
 
-    return message;
+    return '';
   }
 }
