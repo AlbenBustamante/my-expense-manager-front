@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { TokenService } from '../services/token.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,12 @@ export class AuthGuardService {
 
   public canActivateWithoutAuth(): boolean {
     if (!this.tokenService.get()) {
-      alert(`You don't have permissions.`);
+      Swal.fire({
+        title: 'Oops...',
+        text: `You don't have permissions.`,
+        icon: 'error',
+      });
+
       this.router.navigateByUrl('/auth/login');
 
       return false;

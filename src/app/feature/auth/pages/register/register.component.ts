@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { AppBaseComponent } from 'src/app/core/utils/app-base.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -56,6 +57,12 @@ export class RegisterComponent extends AppBaseComponent {
     this.registerForm.value.birthday = '01/01/2001';
 
     if (this.registerForm.invalid) {
+      Swal.fire({
+        title: 'Oops...',
+        icon: 'error',
+        text: 'Please, check the form',
+      });
+
       return this.registerForm.markAllAsTouched();
     }
 

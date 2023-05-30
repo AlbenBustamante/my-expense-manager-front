@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { AppBaseComponent } from 'src/app/core/utils/app-base.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -27,6 +28,12 @@ export class LoginComponent extends AppBaseComponent {
 
   public async login(): Promise<void> {
     if (this.loginForm.invalid) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Please, check the form',
+      });
+
       return this.loginForm.markAllAsTouched();
     }
 
