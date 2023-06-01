@@ -26,21 +26,13 @@
             getErrorMessage("password")
           }}</span>
           <div class="text-center">
-            <button
-              type="submit"
-              class="bg-cyan-700 text-white px-5 py-2 rounded hover:bg-cyan-800"
-            >
-              Log In
-            </button>
+            <app-btn color="primary" type="submit">Log In</app-btn>
           </div>
           <hr />
           <div class="text-center pb-8">
-            <button
-              class="bg-green-700 text-white px-5 py-2 rounded hover:bg-green-800"
-              (click)="goToRegister()"
+            <app-btn color="success" (click)="goToRegister()"
+              >Create new account</app-btn
             >
-              Create new account
-            </button>
           </div>
         </div>
       </form>
