@@ -2,40 +2,7 @@
   <div class="w-full max-w-md shadow-lg">
     <div class="bg-white rounded-lg px-10">
       <div class="text-center text-3xl font-semibold py-8">Welcome!</div>
-      <form role="form" [formGroup]="loginForm" (ngSubmit)="login()">
-        <div class="space-y-3.5">
-          <input
-            type="text"
-            placeholder="Email, username or phone"
-            class="bg-white border border-slate-400 rounded w-full px-4 py-2 shadow focus:outline-slate-400"
-            formControlName="usernameOrEmailOrPhone"
-            [ngClass]="{
-              error: isTouchedField(loginForm, 'usernameOrEmailOrPhone')
-            }"
-          />
-          <span class="text-red-900 text-xs">{{
-            getErrorMessage("usernameOrEmailOrPhone")
-          }}</span>
-          <input
-            type="password"
-            placeholder="Password"
-            class="bg-white border border-slate-400 rounded w-full px-4 py-2 shadow focus:outline-slate-400"
-            formControlName="password"
-          />
-          <span class="text-red-900 text-xs">{{
-            getErrorMessage("password")
-          }}</span>
-          <div class="text-center">
-            <app-btn color="primary" type="submit">Log In</app-btn>
-          </div>
-          <hr />
-          <div class="text-center pb-8">
-            <app-btn color="success" (click)="goToRegister()"
-              >Create new account</app-btn
-            >
-          </div>
-        </div>
-      </form>
+      <app-login-form></app-login-form>
     </div>
   </div>
 </section>
