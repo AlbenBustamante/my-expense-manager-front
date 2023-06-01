@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import jwtDecode from 'jwt-decode';
 import { setCookie, getCookie } from 'typescript-cookie';
+import { IJwtResponse } from '../models/auth.model';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,7 @@ export class TokenService {
     return getCookie('token');
   }
 
-  public getInfo() {
+  public getInfo(): IJwtResponse {
     const token = getCookie('token');
     return jwtDecode(token ?? '');
   }
