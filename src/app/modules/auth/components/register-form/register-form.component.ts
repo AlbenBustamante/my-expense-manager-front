@@ -21,9 +21,9 @@ export class RegisterFormComponent extends AppBaseComponent implements OnInit {
   public registerForm: FormGroup;
 
   constructor(
-    private service: AuthService,
-    private fb: FormBuilder,
-    private router: Router
+    private readonly service: AuthService,
+    private readonly fb: FormBuilder,
+    private readonly router: Router
   ) {
     super();
     this.registerForm = this.fb.group({

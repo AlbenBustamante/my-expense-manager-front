@@ -6,7 +6,10 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class GuardService {
-  constructor(private tokenService: TokenService, private router: Router) {}
+  constructor(
+    private readonly tokenService: TokenService,
+    private readonly router: Router
+  ) {}
 
   public redirectGuard(): boolean {
     if (this.tokenService.get()) {

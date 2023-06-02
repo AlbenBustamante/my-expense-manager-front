@@ -12,7 +12,10 @@ import { TokenService } from './token.service';
 export class AuthService {
   private readonly url: string = `${environment.apiUrl}/auth`;
 
-  constructor(private http: HttpClient, private tokenService: TokenService) {}
+  constructor(
+    private readonly http: HttpClient,
+    private readonly tokenService: TokenService
+  ) {}
 
   public register(req: IUserRegister): Observable<IUserResponse> {
     return this.http.post<IUserResponse>(`${this.url}/register`, req);

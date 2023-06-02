@@ -15,9 +15,9 @@ export class LoginFormComponent extends AppBaseComponent {
   public loginForm: FormGroup;
 
   constructor(
-    private service: AuthService,
-    private router: Router,
-    private fb: FormBuilder
+    private readonly service: AuthService,
+    private readonly router: Router,
+    private readonly fb: FormBuilder
   ) {
     super();
     this.loginForm = this.fb.group({
