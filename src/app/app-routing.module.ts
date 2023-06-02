@@ -11,6 +11,7 @@ const routes: Routes = [
   },
   {
     path: '',
+    title: 'Expense Manager',
     canActivate: [() => inject(GuardService).redirectGuard()],
     loadChildren: () =>
       import('./modules/layout/layout.module').then(
