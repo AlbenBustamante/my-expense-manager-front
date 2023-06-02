@@ -1,11 +1,18 @@
-<form>
-  <div class="flex justify-between items-center">
+<form [formGroup]="form" (ngSubmit)="addCategory()">
+  <div
+    class="flex justify-between"
+    [ngClass]="getErrorForm('categoryName') !== '' ? '' : 'items-center'"
+  >
     <div class="w-4/5">
       <input
         type="text"
         placeholder="Add a new category"
         class="w-full px-4 py-2 bg-gray-100 border border-slate-400 shadow focus:outline-slate-400 focus:bg-white leading-tight rounded"
+        formControlName="categoryName"
       />
+      <span class="text-red-800 text-xs">{{
+        getErrorForm("categoryName")
+      }}</span>
     </div>
     <app-btn type="submit">Add category</app-btn>
   </div>
