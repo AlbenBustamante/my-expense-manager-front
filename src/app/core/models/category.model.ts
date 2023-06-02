@@ -1,4 +1,4 @@
-export interface CategoryResponse {
+export interface ICategoryResponse {
   id: number;
   name: string;
   isEnabled: boolean;
@@ -6,14 +6,14 @@ export interface CategoryResponse {
   updatedAt: Date;
 }
 
-export interface UsersCategoryRequest {
+export interface IUsersCategoryRequest {
   userId?: number;
   categoryName: string;
 }
 
-export interface UsersCategoryResponse {
+export interface IUsersCategoryResponse {
   userId: number;
-  category: CategoryResponse;
+  category: ICategoryResponse;
   isEnabled: boolean;
   createdAt: Date;
   updatedAt: Date;

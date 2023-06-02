@@ -2,11 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import {
-  UsersCategoryRequest,
-  UsersCategoryResponse,
+  IUsersCategoryRequest,
+  IUsersCategoryResponse,
 } from '../models/category.model';
 import { Observable } from 'rxjs';
 import { TokenService } from './token.service';
+import { IUserResponse } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -20,11 +21,17 @@ export class UserService {
   ) {}
 
   public addCategory(
-    req: UsersCategoryRequest
-  ): Observable<UsersCategoryResponse> {
-    return this.http.post<UsersCategoryResponse>(`${this.url}/add-category`, {
+    req: IUsersCategoryRequest
+  ): Observable<IUsersCategoryResponse> {
+    return this.http.post<IUsersCategoryResponse>(`${this.url}/add-category`, {
       ...req,
       userId: this.tokenService.getInfo().id,
     });
+  }
+
+  public getUser(): Observable<IUserResponse> {
+    return this.http.get<IUserResponse>(
+      `${this.url}/${this.tokenService.getInfo().id}`
+    );
   }
 }

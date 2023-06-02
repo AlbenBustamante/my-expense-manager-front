@@ -1,4 +1,5 @@
 import { Gender } from '../utils/enums';
+import { IUsersCategoryResponse } from './category.model';
 
 export interface IUserRegister {
   name: string;
@@ -22,4 +23,5 @@ export interface IUserResponse {
   isEnabled: boolean;
   createdAt: Date;
   updatedAt: Date;
+  categories: IUsersCategoryResponse[];
 }
