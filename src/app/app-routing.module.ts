@@ -1,13 +1,19 @@
-import { NgModule } from '@angular/core';
+import { NgModule, inject } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { GuardService } from './core/services/guard.service';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'auth',
+    canActivate: [() => inject(GuardService).authGuard()],
     loadChildren: () =>
-      import('./feature/feature.module').then(
-        (feature) => feature.FeatureModule
-      ),
+      import('./modules/auth/auth.module').then((auth) => auth.AuthModule),
+  },
+  {
+    path: '',
+    canActivate: [() => inject(GuardService).redirectGuard()],
+    loadChildren: () =>
+      import('./modules/home/home.module').then((home) => home.HomeModule),
   },
 ];
 
