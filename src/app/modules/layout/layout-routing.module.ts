@@ -19,7 +19,6 @@ const routes: Routes = [
       },
       {
         path: 'record',
-        title: 'Record',
         loadChildren: () =>
           import('../record/record.module').then(
             (record) => record.RecordModule
