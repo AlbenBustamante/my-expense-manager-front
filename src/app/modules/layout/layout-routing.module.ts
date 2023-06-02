@@ -24,6 +24,13 @@ const routes: Routes = [
             (record) => record.RecordModule
           ),
       },
+      {
+        path: 'categories',
+        loadChildren: () =>
+          import('../category/category.module').then(
+            (category) => category.CategoryModule
+          ),
+      },
     ],
   },
 ];
