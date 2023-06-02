@@ -13,7 +13,9 @@ const routes: Routes = [
     path: '',
     canActivate: [() => inject(GuardService).redirectGuard()],
     loadChildren: () =>
-      import('./modules/home/home.module').then((home) => home.HomeModule),
+      import('./modules/layout/layout.module').then(
+        (layout) => layout.LayoutModule
+      ),
   },
 ];
 
