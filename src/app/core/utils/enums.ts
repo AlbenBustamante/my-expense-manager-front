@@ -3,3 +3,8 @@ export enum Gender {
   FEMALE = 'FEMALE',
   ANOTHER = 'ANOTHER',
 }
+
+export enum TransactionType {
+  EXPENSE = 'EXPENSE',
+  INCOME = 'INCOME',
+}
