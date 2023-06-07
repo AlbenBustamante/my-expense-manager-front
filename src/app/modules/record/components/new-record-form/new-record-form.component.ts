@@ -6,6 +6,7 @@ import { IUsersCategoryResponse } from 'src/app/core/models/category.model';
 import { TransactionService } from 'src/app/core/services/transaction.service';
 import { UserService } from 'src/app/core/services/user.service';
 import { AppBaseComponent } from 'src/app/core/utils/app-base.component';
+import { TransactionType } from 'src/app/core/utils/enums';
 
 @Component({
   selector: 'app-new-record-form',
@@ -15,6 +16,7 @@ import { AppBaseComponent } from 'src/app/core/utils/app-base.component';
 export class NewRecordFormComponent extends AppBaseComponent implements OnInit {
   public categories!: IUsersCategoryResponse[];
   public form!: FormGroup;
+  public readonly nothing: string = 'nothing';
 
   constructor(
     private readonly userService: UserService,
@@ -26,16 +28,19 @@ export class NewRecordFormComponent extends AppBaseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userService
-      .getUser()
-      .subscribe((result) => (this.categories = result.categories));
+    this.loadCategories();
 
     this.form = this.fb.group({
-      categoryName: [Validators.required],
+      categoryName: [this.nothing, Validators.required],
       description: ['', Validators.required],
       value: ['', Validators.required],
-      type: ['', Validators.required],
+      type: [TransactionType.EXPENSE, Validators.required],
     });
+  }
+
+  private async loadCategories(): Promise<void> {
+    const user = await lastValueFrom(this.userService.getUser());
+    this.categories = user.categories;
   }
 
   public async doSubmit(): Promise<void> {
