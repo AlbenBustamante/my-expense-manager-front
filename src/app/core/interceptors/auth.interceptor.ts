@@ -38,7 +38,7 @@ export class AuthInterceptor implements HttpInterceptor {
           });
         }
 
-        if (error.status === 403) {
+        if (error.status === 401) {
           Swal.fire({
             title: 'You are not logged',
             text: 'Please, login and try again :)',
