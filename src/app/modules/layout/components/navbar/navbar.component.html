@@ -1,15 +1,9 @@
-<nav class="w-100 flex px-12 py-4 text-white bg-gray-800 items-center">
+<nav class="flex px-12 py-4 text-white bg-gray-800 items-center">
   <a routerLink="/" class="text-lg font-medium hover:text-gray-200"
     >Expense Manager</a
   >
-  <ul class="flex space-x-12 ms-auto">
-    <li>
-      <a routerLink="/categories" class="font-medium hover:text-gray-200"
-        >Categories</a
-      >
-    </li>
-    <li>
-      <a routerLink="/" class="font-medium hover:text-gray-200">Profile</a>
-    </li>
+  <ul class="flex space-x-6 ms-auto">
+    <app-nav-element route="/categories">Categories</app-nav-element>
+    <app-nav-element route="/">Profile</app-nav-element>
   </ul>
 </nav>
