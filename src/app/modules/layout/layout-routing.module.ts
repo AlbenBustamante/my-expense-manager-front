@@ -15,21 +15,17 @@ const routes: Routes = [
       {
         path: 'home',
         loadChildren: () =>
-          import('../home/home.module').then((home) => home.HomeModule),
+          import('../home/home.module').then((m) => m.HomeModule),
       },
       {
         path: 'record',
         loadChildren: () =>
-          import('../record/record.module').then(
-            (record) => record.RecordModule
-          ),
+          import('../record/record.module').then((m) => m.RecordModule),
       },
       {
         path: 'categories',
         loadChildren: () =>
-          import('../category/category.module').then(
-            (category) => category.CategoryModule
-          ),
+          import('../category/category.module').then((m) => m.CategoryModule),
       },
     ],
   },
