@@ -2,16 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ProfileRoutingModule } from './profile-routing.module';
-import { ProfileComponent } from './pages/profile/profile.component';
-
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 @NgModule({
-  declarations: [
-    ProfileComponent
-  ],
-  imports: [
-    CommonModule,
-    ProfileRoutingModule
-  ]
+  declarations: [DashboardComponent, SettingsComponent],
+  imports: [CommonModule, ProfileRoutingModule],
 })
-export class ProfileModule { }
+export class ProfileModule {}

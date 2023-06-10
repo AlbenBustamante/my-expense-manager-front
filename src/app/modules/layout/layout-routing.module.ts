@@ -28,7 +28,7 @@ const routes: Routes = [
           import('../category/category.module').then((m) => m.CategoryModule),
       },
       {
-        path: 'profile',
+        path: 'my',
         loadChildren: () =>
           import('../profile/profile.module').then((m) => m.ProfileModule),
       },
