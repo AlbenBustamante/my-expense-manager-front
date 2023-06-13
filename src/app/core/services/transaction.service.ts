@@ -25,10 +25,4 @@ export class TransactionService {
       userId: this.tokenService.getInfo().id,
     });
   }
-
-  public getAllByUser(): Observable<ITransactionResponse[]> {
-    return this.http.get<ITransactionResponse[]>(
-      `${this.url}/user/${this.tokenService.getInfo().id}`
-    );
-  }
 }

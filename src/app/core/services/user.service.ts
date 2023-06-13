@@ -8,6 +8,7 @@ import {
 import { Observable } from 'rxjs';
 import { TokenService } from './token.service';
 import { IUserResponse } from '../models/user.model';
+import { IReportResponse } from '../models/report.model';
 
 @Injectable({
   providedIn: 'root',
@@ -32,6 +33,12 @@ export class UserService {
   public getUser(): Observable<IUserResponse> {
     return this.http.get<IUserResponse>(
       `${this.url}/${this.tokenService.getInfo().id}`
+    );
+  }
+
+  public getReports(): Observable<IReportResponse> {
+    return this.http.get<IReportResponse>(
+      `${this.url}/${this.tokenService.getInfo().id}/reports`
     );
   }
 }
