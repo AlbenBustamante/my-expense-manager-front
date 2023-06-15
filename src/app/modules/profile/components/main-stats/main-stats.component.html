@@ -6,18 +6,26 @@
 <div class="flex items-center pt-5">
   <div class="text-sm text-center w-1/4 space-y-1">
     <p class="text-gray-600 font-medium">Categories</p>
-    <p class="text-gray-900 font-semibold">{{ stats.totalCategories }}</p>
+    <p class="text-gray-900 font-semibold">
+      {{ report.mainStats.totalCategories }}
+    </p>
   </div>
   <div class="text-sm text-center w-1/4 space-y-1">
     <p class="text-gray-600 font-medium">Transactions</p>
-    <p class="text-gray-900 font-semibold">{{ stats.totalTransactions }}</p>
+    <p class="text-gray-900 font-semibold">
+      {{ report.mainStats.totalTransactions }}
+    </p>
   </div>
   <div class="text-sm text-center w-1/4 space-y-1">
     <p class="text-gray-600 font-medium">Total Expenses</p>
-    <p class="text-red-800 font-semibold">{{ stats.totalExpenses }}</p>
+    <p class="text-red-800 font-semibold">
+      {{ report.mainStats.totalExpenses }}
+    </p>
   </div>
   <div class="text-sm text-center w-1/4 space-y-1">
     <p class="text-gray-600 font-medium">Total Incomes</p>
-    <p class="text-green-800 font-semibold">{{ stats.totalIncomes }}</p>
+    <p class="text-green-800 font-semibold">
+      {{ report.mainStats.totalIncomes }}
+    </p>
   </div>
 </div>
