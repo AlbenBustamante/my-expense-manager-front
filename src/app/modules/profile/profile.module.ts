@@ -5,9 +5,17 @@ import { ProfileRoutingModule } from './profile-routing.module';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { MainStatsComponent } from './components/main-stats/main-stats.component';
+import { CurrentBalanceComponent } from './components/current-balance/current-balance.component';
+import { CalendarBtnComponent } from './components/calendar-btn/calendar-btn.component';
 
 @NgModule({
-  declarations: [DashboardComponent, SettingsComponent, MainStatsComponent],
+  declarations: [
+    DashboardComponent,
+    SettingsComponent,
+    MainStatsComponent,
+    CurrentBalanceComponent,
+    CalendarBtnComponent,
+  ],
   imports: [CommonModule, ProfileRoutingModule],
 })
 export class ProfileModule {}
