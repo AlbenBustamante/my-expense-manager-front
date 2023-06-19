@@ -1,0 +1,33 @@
+<aside
+  class="fixed top-0 bottom-0 left-0 h-screen w-56 bg-gray-900 text-gray-300 py-6 px-4 overflow-y-auto"
+>
+  <a routerLink="/" class="text-3xl font-bold flex text-center"
+    >Expense Manager</a
+  >
+  <hr class="my-5 border-0 h-px bg-gray-400 -mx-4" />
+  <ul>
+    <ng-container *ngFor="let menu of menuItems; index as i">
+      <li
+        [routerLink]="menu.route"
+        class="side-item"
+        [ngClass]="menu.space ? 'mb-8' : 'mb-2'"
+        (click)="setShowSubMenu(i)"
+      >
+        {{ menu.title }}
+      </li>
+      <ul *ngIf="menu.subMenuItems != undefined && menu.showSubMenu">
+        <ng-container *ngFor="let subMenu of menu.subMenuItems">
+          <li
+            class="side-item px-5"
+            [ngClass]="[
+              menu.space && !subMenu.space ? '-mt-6' : '',
+              subMenu.space ? 'mb-8' : 'mb-2'
+            ]"
+          >
+            {{ subMenu.title }}
+          </li>
+        </ng-container>
+      </ul>
+    </ng-container>
+  </ul>
+</aside>
