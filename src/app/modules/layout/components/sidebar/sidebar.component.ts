@@ -44,6 +44,12 @@ export class SidebarComponent {
   ];
 
   setShowSubMenu(index: number): void {
+    this.menuItems.forEach((item, i) => {
+      if (index != i) {
+        item.showSubMenu = false;
+      }
+    });
+
     this.menuItems[index].showSubMenu = !this.menuItems[index].showSubMenu;
   }
 }
