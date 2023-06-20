@@ -3,10 +3,12 @@ export interface MenuItem {
   route?: string;
   space?: boolean;
   showSubMenu?: boolean;
+  icon?: string;
   subMenuItems?: {
     title: string;
     route?: string;
     space?: boolean;
+    icon?: string;
   }[];
 }
 

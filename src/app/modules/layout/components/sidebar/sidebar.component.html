@@ -13,7 +13,8 @@
         [ngClass]="menu.space ? 'mb-8' : 'mb-2'"
         (click)="setShowSubMenu(i)"
       >
-        {{ menu.title }}
+        <mat-icon>{{ menu.icon }}</mat-icon>
+        <span>{{ menu.title }}</span>
       </li>
       <ul *ngIf="menu.subMenuItems != undefined && menu.showSubMenu">
         <ng-container *ngFor="let subMenu of menu.subMenuItems">
@@ -24,7 +25,8 @@
               subMenu.space ? 'mb-8' : 'mb-2'
             ]"
           >
-            {{ subMenu.title }}
+            <mat-icon>{{ subMenu.icon }}</mat-icon>
+            <span>{{ subMenu.title }}</span>
           </li>
         </ng-container>
       </ul>

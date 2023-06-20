@@ -4,6 +4,6 @@
 
 @layer {
   .side-item {
-    @apply hover:bg-gray-800 hover:text-gray-200 p-2.5 rounded-md text-sm font-medium cursor-pointer duration-300;
+    @apply hover:bg-gray-800 hover:text-gray-200 p-2.5 rounded-md text-sm font-medium cursor-pointer duration-300 flex items-center space-x-2.5;
   }
 }

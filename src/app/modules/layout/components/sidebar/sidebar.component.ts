@@ -8,24 +8,34 @@ import { MenuItems } from 'src/app/core/models/menu.model';
 })
 export class SidebarComponent {
   readonly menuItems: MenuItems = [
-    { title: 'Dashboard', route: '/my/dashboard', space: true },
+    {
+      title: 'Dashboard',
+      route: '/my/dashboard',
+      space: true,
+      icon: 'dashboard',
+    },
     {
       title: 'Expenses',
       showSubMenu: false,
-      subMenuItems: [{ title: 'Add new record' }, { title: 'Categories' }],
+      icon: 'money_off',
+      subMenuItems: [
+        { title: 'Add new record', icon: 'add' },
+        { title: 'Categories', icon: 'list' },
+      ],
     },
     {
       title: 'Incomes',
       showSubMenu: false,
+      icon: 'attach_money',
       subMenuItems: [
-        { title: 'Add new record' },
-        { title: 'Categories', space: true },
+        { title: 'Add new record', icon: 'add' },
+        { title: 'Categories', icon: 'list', space: true },
       ],
       space: true,
     },
-    { title: 'Profile', route: '/my' },
-    { title: 'Settings', route: '/my/settings' },
-    { title: 'Logout' },
+    { title: 'Profile', route: '/my', icon: 'account_circle' },
+    { title: 'Settings', route: '/my/settings', icon: 'settings' },
+    { title: 'Logout', icon: 'exit_to_app' },
   ];
 
   setShowSubMenu(index: number): void {
