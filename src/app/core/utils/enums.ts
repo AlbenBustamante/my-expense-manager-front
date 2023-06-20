@@ -4,7 +4,7 @@ export enum Gender {
   ANOTHER = 'ANOTHER',
 }
 
-export enum TransactionType {
+export enum CategoryType {
   EXPENSE = 'EXPENSE',
   INCOME = 'INCOME',
 }

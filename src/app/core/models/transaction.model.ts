@@ -1,11 +1,10 @@
-import { TransactionType } from '../utils/enums';
+import { ICategoryRegister } from './category.model';
 
 export interface ITransactionRegister {
   userId?: number;
+  category: ICategoryRegister;
   description: string;
   value: number;
-  type: TransactionType;
-  categoryName: string;
 }
 
 export interface ITransactionResponse {
@@ -14,7 +13,6 @@ export interface ITransactionResponse {
   categoryId: number;
   description: string;
   value: string;
-  type: TransactionType;
   isEnabled: boolean;
   createdAt: Date;
   updatedAt: Date;

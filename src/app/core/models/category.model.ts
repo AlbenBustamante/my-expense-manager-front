@@ -1,6 +1,12 @@
-export interface ICategoryResponse {
-  id: number;
+import { CategoryType } from '../utils/enums';
+
+export interface ICategoryRegister {
   name: string;
+  type: CategoryType;
+}
+
+export interface ICategoryResponse extends ICategoryRegister {
+  id: number;
   isEnabled: boolean;
   createdAt: Date;
   updatedAt: Date;
@@ -8,7 +14,7 @@ export interface ICategoryResponse {
 
 export interface IUsersCategoryRequest {
   userId?: number;
-  categoryName: string;
+  category: ICategoryRegister;
 }
 
 export interface IUsersCategoryResponse {

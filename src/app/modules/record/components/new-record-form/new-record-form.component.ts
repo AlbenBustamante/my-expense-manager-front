@@ -3,10 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { IUsersCategoryResponse } from 'src/app/core/models/category.model';
+import { ITransactionRegister } from 'src/app/core/models/transaction.model';
 import { TransactionService } from 'src/app/core/services/transaction.service';
 import { UserService } from 'src/app/core/services/user.service';
 import { AppBaseComponent } from 'src/app/core/utils/app-base.component';
-import { TransactionType } from 'src/app/core/utils/enums';
+import { CategoryType } from 'src/app/core/utils/enums';
 
 @Component({
   selector: 'app-new-record-form',
@@ -34,7 +35,7 @@ export class NewRecordFormComponent extends AppBaseComponent implements OnInit {
       categoryName: [this.nothing, Validators.required],
       description: ['', Validators.required],
       value: ['', Validators.required],
-      type: [TransactionType.EXPENSE, Validators.required],
+      type: [CategoryType.EXPENSE, Validators.required],
     });
   }
 
@@ -48,7 +49,15 @@ export class NewRecordFormComponent extends AppBaseComponent implements OnInit {
       return this.form.markAllAsTouched();
     }
 
-    await lastValueFrom(this.transactionService.register(this.form.value));
+    const transaction: ITransactionRegister = {
+      ...this.form.value,
+      category: {
+        name: this.form.value.categoryName,
+        type: this.form.value.type,
+      },
+    };
+
+    await lastValueFrom(this.transactionService.register(transaction));
 
     this.router.navigateByUrl('/home');
   }
