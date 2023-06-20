@@ -19,6 +19,7 @@
       <ul *ngIf="menu.subMenuItems != undefined && menu.showSubMenu">
         <ng-container *ngFor="let subMenu of menu.subMenuItems">
           <li
+            [routerLink]="subMenu.route"
             class="side-item px-5"
             [ngClass]="[
               menu.space && !subMenu.space ? '-mt-6' : '',

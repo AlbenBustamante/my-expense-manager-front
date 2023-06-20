@@ -7,6 +7,7 @@ import { SettingsComponent } from './pages/settings/settings.component';
 import { MainStatsComponent } from './components/main-stats/main-stats.component';
 import { CurrentBalanceComponent } from './components/current-balance/current-balance.component';
 import { CalendarBtnComponent } from './components/calendar-btn/calendar-btn.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { CalendarBtnComponent } from './components/calendar-btn/calendar-btn.com
     MainStatsComponent,
     CurrentBalanceComponent,
     CalendarBtnComponent,
+    ProfileComponent,
   ],
   imports: [CommonModule, ProfileRoutingModule],
 })

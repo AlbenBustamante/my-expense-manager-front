@@ -7,9 +7,11 @@ import { NewCategoryComponent } from './components/new-category/new-category.com
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CategoryTableComponent } from './components/category-table/category-table.component';
+import { ExpenseCategoriesComponent } from './pages/expense-categories/expense-categories.component';
+import { IncomeCategoriesComponent } from './pages/income-categories/income-categories.component';
 
 @NgModule({
-  declarations: [CategoriesComponent, NewCategoryComponent, CategoryTableComponent],
+  declarations: [CategoriesComponent, NewCategoryComponent, CategoryTableComponent, ExpenseCategoriesComponent, IncomeCategoriesComponent],
   imports: [
     CommonModule,
     CategoryRoutingModule,

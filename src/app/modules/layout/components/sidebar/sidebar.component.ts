@@ -19,8 +19,8 @@ export class SidebarComponent {
       showSubMenu: false,
       icon: 'money_off',
       subMenuItems: [
-        { title: 'Add new record', icon: 'add' },
-        { title: 'Categories', icon: 'list' },
+        { title: 'Add new record', route: '/record/expense', icon: 'add' },
+        { title: 'Categories', route: '/categories/expenses', icon: 'list' },
       ],
     },
     {
@@ -28,8 +28,13 @@ export class SidebarComponent {
       showSubMenu: false,
       icon: 'attach_money',
       subMenuItems: [
-        { title: 'Add new record', icon: 'add' },
-        { title: 'Categories', icon: 'list', space: true },
+        { title: 'Add new record', route: '/record/income', icon: 'add' },
+        {
+          title: 'Categories',
+          route: '/categories/incomes',
+          icon: 'list',
+          space: true,
+        },
       ],
       space: true,
     },
