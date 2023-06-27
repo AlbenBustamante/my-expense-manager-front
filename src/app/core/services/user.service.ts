@@ -5,10 +5,11 @@ import {
   IUsersCategoryRequest,
   IUsersCategoryResponse,
 } from '../models/category.model';
-import { Observable } from 'rxjs';
+import { Observable, lastValueFrom } from 'rxjs';
 import { TokenService } from './token.service';
 import { IUserResponse } from '../models/user.model';
 import { IReportResponse } from '../models/report.model';
+import { CategoryType } from '../utils/enums';
 
 @Injectable({
   providedIn: 'root',
@@ -39,6 +40,16 @@ export class UserService {
   public getReports(): Observable<IReportResponse> {
     return this.http.get<IReportResponse>(
       `${this.url}/${this.tokenService.getInfo().id}/reports`
+    );
+  }
+
+  public async getUserCategories(
+    type: CategoryType
+  ): Promise<IUsersCategoryResponse[]> {
+    const user = await lastValueFrom(this.getUser());
+
+    return user.categories.filter(
+      (category) => category.category.type === type
     );
   }
 }
