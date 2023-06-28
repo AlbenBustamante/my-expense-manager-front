@@ -7,12 +7,14 @@ import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NewExpenseComponent } from './pages/new-expense/new-expense.component';
 import { NewIncomeComponent } from './pages/new-income/new-income.component';
+import { FormCardComponent } from './components/form-card/form-card.component';
 
 @NgModule({
   declarations: [
     NewRecordFormComponent,
     NewExpenseComponent,
     NewIncomeComponent,
+    FormCardComponent,
   ],
   imports: [
     CommonModule,

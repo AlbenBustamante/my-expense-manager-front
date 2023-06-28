@@ -1,55 +1,49 @@
-<section class="flex justify-center">
-  <form
-    role="form"
-    [formGroup]="form"
-    (ngSubmit)="doSubmit()"
-    class="w-full max-w-2xl"
-  >
-    <div class="space-y-10 text-gray-900">
-      <div class="space-y-2.5">
-        <label for="description" class="block text-sm font-semibold uppercase">
-          Description
-        </label>
-        <input
-          type="text"
-          placeholder="chips, salary..."
-          class="w-full px-5 pt-1.5 pb-1 border-b-2 outline-none border-cyan-950 focus:border-cyan-600 duration-300"
-          formControlName="description"
-          autocomplete
-        />
-      </div>
-      <div class="space-y-2.5">
-        <label for="categoryName" class="block text-sm font-semibold uppercase">
-          Category
-        </label>
-        <select
-          formControlName="categoryName"
-          class="w-full px-5 py-2 mt-1 outline-none"
-        >
-          <option [value]="nothing" disabled>Select a category</option>
-          <option
-            *ngFor="let category of categories"
-            [value]="category.category.name"
-          >
-            {{ category.category.name }}
-          </option>
-        </select>
-      </div>
-      <div class="space-y-2.5">
-        <label for="value" class="block text-sm font-semibold uppercase">
-          Value
-        </label>
-        <input
-          type="number"
-          placeholder="14.99"
-          class="w-full px-5 pt-1.5 pb-1 border-b-2 outline-none border-cyan-950 focus:border-cyan-600 duration-300"
-          formControlName="value"
-          autocomplete
-        />
-      </div>
+<form role="form" [formGroup]="form" (ngSubmit)="doSubmit()" class="w-full">
+  <div class="space-y-10 text-gray-900">
+    <div class="space-y-2.5">
+      <label for="description" class="block text-sm font-semibold uppercase">
+        Description
+      </label>
+      <input
+        type="text"
+        placeholder="chips, salary..."
+        class="w-full px-5 pt-1.5 pb-1 border-b-2 outline-none border-cyan-950 focus:border-cyan-600 duration-300"
+        formControlName="description"
+        autocomplete
+      />
     </div>
-    <app-btn type="submit" class="w-full mt-16">
-      Add new {{ type.toLowerCase() }}
-    </app-btn>
-  </form>
-</section>
+
+    <div class="space-y-2.5">
+      <label for="value" class="block text-sm font-semibold uppercase">
+        Value
+      </label>
+      <input
+        type="number"
+        placeholder="14.99"
+        class="w-full px-5 pt-1.5 pb-1 border-b-2 outline-none border-cyan-950 focus:border-cyan-600 duration-300"
+        formControlName="value"
+        autocomplete
+      />
+    </div>
+    <div class="space-y-2.5">
+      <label for="categoryName" class="block text-sm font-semibold uppercase">
+        Category
+      </label>
+      <select
+        formControlName="categoryName"
+        class="w-full px-5 py-2 mt-1 outline-none"
+      >
+        <option [value]="nothing" disabled>Select a category</option>
+        <option
+          *ngFor="let category of categories"
+          [value]="category.category.name"
+        >
+          {{ category.category.name }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <app-btn type="submit" class="w-full mt-12">
+    Add new {{ type.toLowerCase() }}
+  </app-btn>
+</form>
