@@ -23,7 +23,12 @@ export class SidebarComponent {
         { title: 'Add new income', icon: 'attach_money' },
       ],
     },
-    { title: 'Categories', space: true, icon: 'category' },
+    {
+      title: 'Categories',
+      space: true,
+      icon: 'category',
+      route: '/categories',
+    },
     { title: 'Reports', space: true, icon: 'list' },
     { title: 'Profile', route: '/my', icon: 'account_circle' },
     { title: 'Settings', route: '/my/settings', icon: 'settings' },

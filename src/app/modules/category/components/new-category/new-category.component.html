@@ -1,0 +1,10 @@
+<form role="form" class="flex items-center space-x-4">
+  <input
+    type="text"
+    placeholder="Write a new category"
+    class="px-5 pt-1.5 pb-1 border-b-2 outline-none border-cyan-950 focus:border-cyan-600 duration-300 w-5/6"
+    name="name"
+    [(ngModel)]="category.name"
+  />
+  <app-btn class="w-1/6" (click)="openDialog()">Add category</app-btn>
+</form>

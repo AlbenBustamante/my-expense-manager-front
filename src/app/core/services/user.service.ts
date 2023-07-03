@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import {
+  ICategoryRegister,
   IUsersCategoryRequest,
   IUsersCategoryResponse,
 } from '../models/category.model';
@@ -23,11 +24,11 @@ export class UserService {
   ) {}
 
   public addCategory(
-    req: IUsersCategoryRequest
+    req: ICategoryRegister
   ): Observable<IUsersCategoryResponse> {
     return this.http.post<IUsersCategoryResponse>(`${this.url}/add-category`, {
-      ...req,
       userId: this.tokenService.getInfo().id,
+      category: { ...req },
     });
   }
 

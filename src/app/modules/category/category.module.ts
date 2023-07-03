@@ -4,21 +4,24 @@ import { CommonModule } from '@angular/common';
 import { CategoryRoutingModule } from './category-routing.module';
 import { CategoriesComponent } from './pages/categories/categories.component';
 import { SharedModule } from '../shared/shared.module';
-import { ReactiveFormsModule } from '@angular/forms';
-import { ExpenseCategoriesComponent } from './pages/expense-categories/expense-categories.component';
-import { IncomeCategoriesComponent } from './pages/income-categories/income-categories.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NewCategoryComponent } from './components/new-category/new-category.component';
+import { CategoryTypeComponent } from './components/category-type/category-type.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     CategoriesComponent,
-    ExpenseCategoriesComponent,
-    IncomeCategoriesComponent,
+    NewCategoryComponent,
+    CategoryTypeComponent,
   ],
   imports: [
     CommonModule,
     CategoryRoutingModule,
     SharedModule,
     ReactiveFormsModule,
+    MatDialogModule,
+    FormsModule,
   ],
 })
 export class CategoryModule {}

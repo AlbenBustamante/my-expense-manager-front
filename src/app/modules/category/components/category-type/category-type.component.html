@@ -1,0 +1,17 @@
+<app-modal modalTitle="New Category">
+  <label for="type" class="block font-medium text-sm mb-1">
+    Select the category type
+  </label>
+  <select class="w-full outline-none text-sm" name="type" [(ngModel)]="type">
+    <option value="EXPENSE">Expense</option>
+    <option value="INCOME">Income</option>
+  </select>
+  <app-btn
+    type="submit"
+    color="success"
+    class="w-full mt-5 text-sm"
+    [mat-dialog-close]="type"
+  >
+    Complete and finish
+  </app-btn>
+</app-modal>
