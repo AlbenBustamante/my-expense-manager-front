@@ -19,8 +19,16 @@ export class SidebarComponent {
       icon: 'add',
       showSubMenu: false,
       subMenuItems: [
-        { title: 'Add new expense', icon: 'money_off' },
-        { title: 'Add new income', icon: 'attach_money' },
+        {
+          title: 'Add new expense',
+          icon: 'money_off',
+          route: '/record/expense',
+        },
+        {
+          title: 'Add new income',
+          icon: 'attach_money',
+          route: '/record/income',
+        },
       ],
     },
     {
