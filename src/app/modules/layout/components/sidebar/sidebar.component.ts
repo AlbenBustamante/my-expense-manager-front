@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MenuItems } from 'src/app/core/models/menu.model';
+import { MenuItem, MenuItems } from 'src/app/core/models/menu.model';
 
 @Component({
   selector: 'app-sidebar',
@@ -13,6 +13,7 @@ export class SidebarComponent {
       route: '/my/dashboard',
       space: true,
       icon: 'dashboard',
+      selected: true,
     },
     {
       title: 'Records',
@@ -45,11 +46,24 @@ export class SidebarComponent {
 
   setShowSubMenu(index: number): void {
     this.menuItems.forEach((item, i) => {
+      item.selected = index === i;
+
       if (index != i) {
         item.showSubMenu = false;
       }
+
+      item.subMenuItems?.forEach((subItem) => (subItem.selected = false));
     });
 
     this.menuItems[index].showSubMenu = !this.menuItems[index].showSubMenu;
+  }
+
+  setSubMenuSelected(index: number) {
+    const item = this.menuItems.find((item) => item.selected === true);
+    const subItems = item?.subMenuItems;
+
+    if (subItems) {
+      subItems.forEach((subItem, i) => (subItem.selected = index === i));
+    }
   }
 }

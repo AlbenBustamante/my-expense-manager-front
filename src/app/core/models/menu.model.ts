@@ -4,11 +4,13 @@ export interface MenuItem {
   space?: boolean;
   showSubMenu?: boolean;
   icon?: string;
+  selected?: boolean;
   subMenuItems?: {
     title: string;
     route?: string;
     space?: boolean;
     icon?: string;
+    selected?: boolean;
   }[];
 }
 

@@ -1,33 +1,39 @@
 <aside
-  class="fixed top-0 bottom-0 left-0 h-screen w-56 bg-gray-900 text-gray-300 py-6 px-4 overflow-y-auto"
+  class="fixed top-0 bottom-0 left-0 h-screen w-60 bg-gray-100 text-gray-800 py-6 px-4 overflow-y-auto border-r border-gray-300"
 >
-  <a routerLink="/" class="text-3xl font-bold flex text-center"
-    >Expense Manager</a
-  >
-  <hr class="my-5 border-0 h-px bg-gray-400 -mx-4" />
-  <ul>
-    <ng-container *ngFor="let menu of menuItems; index as i">
+  <a routerLink="/" class="text-3xl font-medium flex text-center">
+    Expense Manager
+  </a>
+  <ul class="mt-7">
+    <ng-container *ngFor="let item of menuItems; index as itemIndex">
       <li
-        [routerLink]="menu.route"
+        [routerLink]="item.route"
         class="side-item"
-        [ngClass]="menu.space ? 'mb-8' : 'mb-2'"
-        (click)="setShowSubMenu(i)"
+        [ngClass]="[
+          item.space ? 'mb-8' : 'mb-2',
+          item.selected ? 'bg-gray-200 text-sky-900' : ''
+        ]"
+        (click)="setShowSubMenu(itemIndex)"
       >
-        <mat-icon>{{ menu.icon }}</mat-icon>
-        <span>{{ menu.title }}</span>
+        <mat-icon>{{ item.icon }}</mat-icon>
+        <span>{{ item.title }}</span>
       </li>
-      <ul *ngIf="menu.subMenuItems != undefined && menu.showSubMenu">
-        <ng-container *ngFor="let subMenu of menu.subMenuItems">
+      <ul *ngIf="item.subMenuItems != undefined && item.showSubMenu">
+        <ng-container
+          *ngFor="let subItem of item.subMenuItems; index as subItemIndex"
+        >
           <li
-            [routerLink]="subMenu.route"
-            class="side-item px-5"
+            [routerLink]="subItem.route"
+            class="side-item pl-8 pr-5"
             [ngClass]="[
-              menu.space && !subMenu.space ? '-mt-6' : '',
-              subMenu.space ? 'mb-8' : 'mb-2'
+              subItem.space && !subItem.space ? '-mt-6' : '',
+              subItem.space ? 'mb-8' : 'mb-1.5',
+              subItem.selected ? 'bg-gray-200 text-sky-900' : ''
             ]"
+            (click)="setSubMenuSelected(subItemIndex)"
           >
-            <mat-icon>{{ subMenu.icon }}</mat-icon>
-            <span>{{ subMenu.title }}</span>
+            <mat-icon>{{ subItem.icon }}</mat-icon>
+            <span>{{ subItem.title }}</span>
           </li>
         </ng-container>
       </ul>
