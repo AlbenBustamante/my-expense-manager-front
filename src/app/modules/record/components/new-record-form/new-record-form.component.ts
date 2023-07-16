@@ -47,7 +47,7 @@ export class NewRecordFormComponent extends AppBaseComponent implements OnInit {
         : CategoryType.EXPENSE;
 
     this.title = this.title != 'Expense' ? 'Expense' : 'Income';
-    await this.userService.getUserCategories(this.type);
+    this.categories = await this.userService.getUserCategories(this.type);
   }
 
   public async doSubmit(): Promise<void> {

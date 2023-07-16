@@ -25,7 +25,7 @@ export class SidebarComponent {
       icon: 'category',
       route: '/categories',
     },
-    { title: 'Reports', space: true, icon: 'list' },
+    { title: 'Reports', space: true, icon: 'list', route: '/reports' },
     { title: 'Profile', route: '/my', icon: 'account_circle' },
     { title: 'Settings', route: '/my/settings', icon: 'settings' },
     { title: 'Logout', icon: 'exit_to_app' },
