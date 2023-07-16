@@ -18,7 +18,8 @@ export class NewRecordFormComponent extends AppBaseComponent implements OnInit {
   public categories!: IUsersCategoryResponse[];
   public form: FormGroup;
   public readonly nothing: string = 'nothing';
-  @Input() public type: CategoryType = CategoryType.EXPENSE;
+  public type: CategoryType = CategoryType.EXPENSE;
+  public title: 'Expense' | 'Income' = 'Expense';
 
   constructor(
     private readonly userService: UserService,
@@ -37,6 +38,16 @@ export class NewRecordFormComponent extends AppBaseComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.categories = await this.userService.getUserCategories(this.type);
+  }
+
+  async setCategoryType() {
+    this.type =
+      this.type === CategoryType.EXPENSE
+        ? CategoryType.INCOME
+        : CategoryType.EXPENSE;
+
+    this.title = this.title != 'Expense' ? 'Expense' : 'Income';
+    await this.userService.getUserCategories(this.type);
   }
 
   public async doSubmit(): Promise<void> {

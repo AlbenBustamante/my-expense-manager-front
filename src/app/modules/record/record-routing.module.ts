@@ -1,13 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NewExpenseComponent } from './pages/new-expense/new-expense.component';
-import { NewIncomeComponent } from './pages/new-income/new-income.component';
+import { NewRecordComponent } from './pages/new-record/new-record.component';
 
-const routes: Routes = [
-  { path: '', redirectTo: 'expense', pathMatch: 'full' },
-  { path: 'expense', component: NewExpenseComponent },
-  { path: 'income', component: NewIncomeComponent },
-];
+const routes: Routes = [{ path: '', component: NewRecordComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

@@ -13,24 +13,11 @@ export class SidebarComponent {
       route: '/my/dashboard',
       space: true,
       icon: 'dashboard',
-      selected: true,
     },
     {
-      title: 'Records',
+      title: 'Add new record',
       icon: 'add',
-      showSubMenu: false,
-      subMenuItems: [
-        {
-          title: 'Add new expense',
-          icon: 'money_off',
-          route: '/record/expense',
-        },
-        {
-          title: 'Add new income',
-          icon: 'attach_money',
-          route: '/record/income',
-        },
-      ],
+      route: '/record',
     },
     {
       title: 'Categories',

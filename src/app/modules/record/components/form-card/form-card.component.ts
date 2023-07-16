@@ -5,6 +5,4 @@ import { Component, Input } from '@angular/core';
   templateUrl: './form-card.component.html',
   styleUrls: ['./form-card.component.css'],
 })
-export class FormCardComponent {
-  @Input() title: string = '';
-}
+export class FormCardComponent {}
