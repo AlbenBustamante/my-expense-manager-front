@@ -11,6 +11,7 @@ import { TokenService } from './token.service';
 import { IUserResponse } from '../models/user.model';
 import { IReportResponse } from '../models/report.model';
 import { CategoryType } from '../utils/enums';
+import { ITransactionResponse } from '../models/transaction.model';
 
 @Injectable({
   providedIn: 'root',
@@ -51,6 +52,12 @@ export class UserService {
 
     return user.categories.filter(
       (category) => category.category.type === type
+    );
+  }
+
+  public getTransactions(): Observable<ITransactionResponse[]> {
+    return this.http.get<ITransactionResponse[]>(
+      `${this.url}/${this.tokenService.getInfo().id}/transactions`
     );
   }
 }

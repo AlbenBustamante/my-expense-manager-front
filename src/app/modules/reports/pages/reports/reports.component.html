@@ -1,0 +1,45 @@
+<h2 class="text-3xl font-semibold text-gray-800 py-6">Reports</h2>
+<table class="w-full mt-2 table table-auto text-gray-800">
+  <thead>
+    <tr class="text-left text-sm border-b border-gray-300 uppercase">
+      <th class="px-5 pt-1.5 pb-3">Description</th>
+      <th class="px-5 pt-1.5 pb-3">Category</th>
+      <th class="px-5 pt-1.5 pb-3">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="text-left" *ngFor="let report of reports; index as i">
+      <td class="px-5 py-1.5" [ngClass]="i % 2 !== 0 ? 'bg-gray-200' : ''">
+        {{ report.description }}
+      </td>
+      <td class="px-5 py-1.5" [ngClass]="i % 2 !== 0 ? 'bg-gray-200' : ''">
+        {{ report.category.name }}
+      </td>
+      <td
+        class="px-5 py-1.5"
+        [ngClass]="[
+          i % 2 !== 0 ? 'bg-gray-200' : '',
+          report.category.type === 'EXPENSE' ? 'text-red-900' : 'text-green-900'
+        ]"
+      >
+        {{ report.value }}
+      </td>
+      <td class="px-5 py-1.5" [ngClass]="i % 2 !== 0 ? 'bg-gray-200' : ''">
+        <a
+          href=""
+          class="text-sky-900 hover:text-sky-500 font-medium p-1.5"
+          title="Edit or update transaction"
+        >
+          Edit
+        </a>
+        <a
+          href=""
+          class="text-red-900 hover:text-red-500 font-bold p-1.5"
+          title="Delete transaction"
+        >
+          X
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,4 +1,4 @@
-import { ICategoryRegister } from './category.model';
+import { ICategoryRegister, ICategoryResponse } from './category.model';
 
 export interface ITransactionRegister {
   userId?: number;
@@ -10,7 +10,7 @@ export interface ITransactionRegister {
 export interface ITransactionResponse {
   id: number;
   userId: number;
-  categoryId: number;
+  category: ICategoryResponse;
   description: string;
   value: string;
   isEnabled: boolean;
